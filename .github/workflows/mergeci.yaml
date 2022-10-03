@@ -1,0 +1,10 @@
+
+name: Merge CI
+on: [ pull-request ]
+jobs:
+  Test:
+    runs-on: [ ubuntu-latest, windows-latest, macos-latest ]
+    steps:
+      - uses: actions/checkout@v2
+      - run: python main.py
+      
