@@ -1,0 +1,8 @@
+name: Merge CI
+on: [ pull-request ]
+jobs:
+  Explore-Github-Actions:
+    runs-on: [ ubuntu-latest, windows-latest ]
+    steps:
+      - uses: actions/checkout@v2
+      - run: python main.py
