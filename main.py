@@ -1,4 +1,4 @@
 print("Hello World")
-print("This is an update")
+print("This is a Merge-Pull Request update")
 
 # extra line
