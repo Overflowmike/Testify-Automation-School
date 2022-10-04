@@ -2,7 +2,9 @@
 import main
 import unittest
 
-unitest = 'new test'
+unitest = 'additions test'
+
+TestCase = 'Verify that test_addition was successful'
 
 class TestMain(unitest.TestCase):
 
