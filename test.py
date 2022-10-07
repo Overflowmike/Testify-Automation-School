@@ -2,10 +2,6 @@
 import main
 import unittest
 
-unitest = 'additions test'
-
-TestCase = 'Verify that test_addition was successful'
-
 class TestMain(unitest.TestCase):
 
     def test_addition(self):
