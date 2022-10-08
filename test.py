@@ -2,7 +2,7 @@
 import main
 import unittest
 
-class TestMain(unitest.TestCase):
+class TestMain(unittest.TestCase):
 
     def test_addition(self):
         self.assertEqual(main.addition(1,2), 3, "Should be 3")
