@@ -1,9 +1,9 @@
 #Task 3
 
-mobileDevice = "Popularly used"
+mobileDevice = "Popularly Used"
 
 
-Model = "iPhone"
+Model = "iPhone 13 Pro Max"
 OSVersion = " iOS"
 phone = Model + OSVersion
 
