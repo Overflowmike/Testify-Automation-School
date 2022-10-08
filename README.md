@@ -1,10 +1,8 @@
-# ci-cd-MichaelTestify
-Test Repository for CI CD Course
+# Testify Automation School
+Test Repository for CI-CD Course
 
 # Table Of Content
 
-- Installation
+- JavaScript Programming Language
 
-## Installation
-
-How to Install
+- Python Programming Language
