@@ -1,5 +1,7 @@
 # Task 8
 
+print("\nNumber\n")
+
 number = 11
 for i in range(number):
     if i == 11:
