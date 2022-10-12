@@ -1,14 +1,14 @@
 
-# Task 12
+# # Task 12
 
 
-name = 'Python' 
+# name = 'Python' 
 
-def coding():
-    language = "Java" 
-    print("Name", name, "Language", language)
-    print(language)
+# def coding():
+#     language = "Java" 
+#     print("Name", name, "Language", language)
+#     print(language)
 
 
-print(name)
-coding()
+# print(name)
+# coding()

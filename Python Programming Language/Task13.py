@@ -1,9 +1,9 @@
-# task 13
+# # task 13
 
-greet = " Hello  World "
+# greet = " Hello  World "
 
-print(greet)
-print(greet.strip())
-print(greet.lstrip())
-print(greet.rstrip())
+# print(greet)
+# print(greet.strip())
+# print(greet.lstrip())
+# print(greet.rstrip())
 
