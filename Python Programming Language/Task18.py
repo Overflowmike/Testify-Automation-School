@@ -1,6 +1,5 @@
 # Task 18
 
-
 class Human:
 
     group = "Male"
@@ -11,10 +10,10 @@ class Human:
         self.name = name
 
 Michael = Human("Michael")
-Festus = Human("Festus")
 
 print(Michael.name)
-print(Festus.name)
-
 print(Michael.group)
-print(Festus.group)
+
+
+print(Michael.leg_count)
+print(Michael.can_walk)
