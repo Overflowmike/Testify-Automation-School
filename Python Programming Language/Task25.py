@@ -1,17 +1,9 @@
 # Task 25
 
+
 import print_name as print_name
 
 
-
-
-
-
-
-
-
-
- 
 class Utilities:
 
     @staticmethod
