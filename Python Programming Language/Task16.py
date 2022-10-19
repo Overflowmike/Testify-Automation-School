@@ -1,16 +1,16 @@
-# Task 16
+# # Task 16
 
 
-food = {
-    "grains": "Rice",
-    "solid": "Yam",
-    "liquid": "Custard",
-    "noodles": "Indomie"
-}
+# food = {
+#     "grains": "Rice",
+#     "solid": "Yam",
+#     "liquid": "Custard",
+#     "noodles": "Indomie"
+# }
 
-print("dictionary:", food)
+# print("dictionary:", food)
 
-# update -> add more key-value pairs into a dictionary
-food.update({"protein": "beans"})
-food.update({"flour": "bread"})
-print("update:", food)
+# # update -> add more key-value pairs into a dictionary
+# food.update({"protein": "beans"})
+# food.update({"flour": "bread"})
+# print("update:", food)
