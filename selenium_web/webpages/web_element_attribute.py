@@ -12,6 +12,7 @@ def print_element_attributes(element):
     print("Inner HTML", element.get_attribute("innerHTML"))
 
 
+
 def main():
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     driver.get("https://www.testifyltd.com/contact")
