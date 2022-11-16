@@ -1,0 +1,57 @@
+
+INTERVIEW QUESTIONS ON PYTHONS
+
+#1 What are the main features of Python
+>> Easy to Learn
+>> Free and Open Source
+>> Object Oriented programming language
+>> Allows the use of Classes
+
+
+#2 What is the difference between a list and a dictionary
+
+>> List is a collection of index values pairs  VS Dictionary is a hashed structure of key and value pairs
+>> List is created by placing elements in [ ] separated by commas “, “ VS Dictionary is created by placing elements in { } as “key”:”value”, each key value pair is separated by commas “, “
+>> Dictionary is created by placing elements in { } as “key”:”value”, each key value pair is separated by commas “, “ VS The keys of dictionary can be of any data type.
+
+
+# 3 In your word, explain the keyword pass
+
+>> A “pass” keyword refers to a null operation, Or in other words, one can say, “do nothing”. This is when you don't want a function to be pass
+
+
+# 4 What is an iterator in Python?
+
+>> An iterator is an object that contains a countable number of values. An iterator is an object that can be iterated upon, meaning that you can traverse through all the values.
+
+In Python, an iterator is an object which implements the iterator protocol, which consist of the methods __iter__() and __next__().
+
+
+# 5 What is unit testing?
+
+>> unit testing is a process in software engineering in which most of the smallest and most testable part of an application is individually tested to ensure it satisfies their use case.
+
+# 6 Of the available unit test framework in Python, which is your favorite and why
+
+>> Pytest, because it is an open source unit testing framework and it helps in functional and API test
+
+# 7 Name the types of arguments in Python
+
+>> a) Required Arguments. b) Default Arguments. c) Keyword arguments. d) Arbitrary Arguments. e) Arbitrary Keyword arguments
+
+#8 Explain what functions are
+
+>> A function is a reusable block of code that is executed when it is called from other parts of the program.
+A function in Python has equal status with other objects in Python, and it can be assigned to a variable or to pass another function parameter
+
+# 9 How do you create a class in Python?
+
+>> Open your python IDE, use keyword "Class", followed by a space, then the name of the class, and a colon, indent and add basic variables for the class, add functions to the class, call the method of the class (i.e. the name)
+
+# 10 Explain what polymorphism and Inheritance are in Python OOP
+
+>> Polymorphism is the capability of many class methods to perform the same task. Using inheritance, a class can override the parent method or attribute, and polymorphism allows hat same method to perform different actions for each class.
+>> Inheritance is the capability of one class to derive or inherit the attributes and methods from another class. The class that derives properties is called the derived class or child class and the class from which the properties are being derived is called the base class or parent class.
+
+
+
