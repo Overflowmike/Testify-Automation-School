@@ -1,5 +1,5 @@
 
-INTERVIEW QUESTIONS ON PYTHONS
+INTERVIEW QUESTIONS ON PYTHON CODING CHALLENGE
 
 #1 What are the main features of Python
 >> Easy to Learn
@@ -52,6 +52,5 @@ A function in Python has equal status with other objects in Python, and it can b
 
 >> Polymorphism is the capability of many class methods to perform the same task. Using inheritance, a class can override the parent method or attribute, and polymorphism allows hat same method to perform different actions for each class.
 >> Inheritance is the capability of one class to derive or inherit the attributes and methods from another class. The class that derives properties is called the derived class or child class and the class from which the properties are being derived is called the base class or parent class.
-
 
 
