@@ -1,5 +1,6 @@
 
-# Create  a  two-string  variable,  concatenate  the  two  variablesand print out the result
+# Technical Python Question1
+# Create  a  two-string  variable,  concatenate  the  two  variables and print out the result
 
 group = "Laptop"
 attr = "Hp"
