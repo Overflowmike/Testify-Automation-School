@@ -16,7 +16,7 @@ def main():
     send_keys_to_element(driver.find_element(By.NAME, "username"), "Admin")
     time.sleep(2)
     send_keys_to_element(driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[2]/div/div[2]/input'), "admin123")
-    time.sleep(3)
+    time.sleep(5)
     # Log in
     log_in_button = driver.find_element(By.XPATH, '/html/body/div/div[1]/div/div[1]/div/div[2]/div[2]/form/div[3]/button')
     log_in_button.find_element(By.XPATH, '/html/body/div/div[1]/div/div[1]/div/div[2]/div[2]/form/div[3]/button').click()
