@@ -1,0 +1,244 @@
+{
+	"info": {
+		"_postman_id": "6ab71681-bf85-4f3d-a76f-30fb07add986",
+		"name": "Module3BAPITask8",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22953723"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"Random Name\", pm.variables.replaceIn('{{$randomFullName}}'))"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var getResponseValue = pm.response.json();\r",
+							"\r",
+							"pm.globals.set(\"access_token\", getResponseValue.accessToken)\r",
+							"pm.environment.set(\"order_token\", getResponseValue.accessToken)\r",
+							"\r",
+							"// Test One: Confirm that random Access Token is generated\r",
+							"pm.test(\"This confirms that generated random Access Token is \" + getResponseValue.accessToken, function (){\r",
+							"    pm.expect(getResponseValue.accessToken).to.eql(getResponseValue.accessToken);\r",
+							"})\r",
+							"\r",
+							"// Test Three: Confirm the status Code \r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"// Test Four: Comfirm the Status Code string\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"Created\");\r",
+							"});\r",
+							"\r",
+							"// // Request Execution Order\r",
+							"// postman.setNextRequest(\"\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n {\r\n   \"clientName\": \"{{randomName}}\",\r\n   \"clientEmail\": \"{{$randomExampleEmail}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api-clients",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api-clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Books",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"id\", \"1\")\r",
+							"\r",
+							"// // Request Execution Order\r",
+							"// postman.setNextRequest(\"Authentication\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/books",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"console.log(jsonData)\r",
+							"\r",
+							"\r",
+							"// Test that Status is OK\r",
+							"pm.test(\"This confirms Status is \" + jsonData.status, function (){\r",
+							"    pm.expect(jsonData.status).to.eql(jsonData.status);\r",
+							"})\r",
+							"\r",
+							"// Request Execution Order\r",
+							"postman.setNextRequest(\"Place an Order\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/status",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Place an Order",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Generate Random Book ID \r",
+							"var bookId = Math.floor(Math.random() * 1000);\r",
+							"console.log(bookId)\r",
+							"// Set Generated Book ID to Global\r",
+							"pm.globals.set(\"bookId\", bookId*2)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"console.log(jsonData)\r",
+							"\r",
+							"// Test One: Confirm that Created Status is True\r",
+							"pm.test(\"This confirms that Created status is \" + jsonData.created, function (){\r",
+							"    pm.expect(jsonData.created).to.eql(jsonData.created);\r",
+							"})\r",
+							"// Test Two: Confirm that random OrderId is generated\r",
+							"pm.test(\"This confirms that generated random OrderId is \" + jsonData.orderId, function (){\r",
+							"    pm.expect(jsonData.orderId).to.eql(jsonData.orderId);\r",
+							"})\r",
+							"// Test Three: Confirm the status Code \r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"// Test Four: Comfirm the Status Code string\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"Created\");\r",
+							"});\r",
+							"\r",
+							"// Request Execution Order\r",
+							"postman.setNextRequest(null)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{order_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{order_token}}",
+						"type": "text"
+					},
+					{
+						"key": "bookId",
+						"value": "{{bookId}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"bookId\": 3,\r\n  \"customerName\": \"{{$randomFullName}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/orders",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "bookId",
+			"value": ""
+		}
+	]
+}

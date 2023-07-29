@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "c843adcd-d31d-4048-b10b-12951d935e26",
+		"name": "TAS-Files",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22953723"
+	},
+	"item": [
+		{
+			"name": "asset",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://assets.postman.com/postman-docs/var-scope.jpg",
+					"protocol": "https",
+					"host": [
+						"assets",
+						"postman",
+						"com"
+					],
+					"path": [
+						"postman-docs",
+						"var-scope.jpg"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "generateFile.json",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"name\": \"Testify Limited\",\r\n        \"location\": \"Global - Online\",\r\n        \"username\": \"Limited\"\r\n    },\r\n    {\r\n        \"name\": \"Testify Academy\",\r\n        \"location\": \"United Kingdom\",\r\n        \"username\": \"Academy\"\r\n    },\r\n    {\r\n        \"name\": \"Testify konsult\",\r\n        \"location\": \"United State of America\",\r\n        \"username\": \"Konsult\"\r\n    },\r\n    {\r\n        \"name\": \"Testify Testars\",\r\n        \"location\": \"Africa\",\r\n        \"username\": \"Testars\"\r\n    },\r\n    {\r\n        \"name\": \"Testify Network Community\",\r\n        \"location\": \"Slack\",\r\n        \"username\": \"Community\"\r\n    }\r\n\r\n\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://assets.postman.com/postman-docs/var-scope.jpg",
+					"protocol": "https",
+					"host": [
+						"assets",
+						"postman",
+						"com"
+					],
+					"path": [
+						"postman-docs",
+						"var-scope.jpg"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

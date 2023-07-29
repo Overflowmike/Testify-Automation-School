@@ -1,0 +1,485 @@
+{
+	"info": {
+		"_postman_id": "19e6e93a-410c-42d0-afac-e377234edd3f",
+		"name": "TAS- StudentCourse",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22953723"
+	},
+	"item": [
+		{
+			"name": "Re-use Variables",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// let sampleData = fish;\r",
+							"\r",
+							"\r",
+							"// Generate Random Full Name for Test\r",
+							"// let fullName = pm.variables.replaceIn(\"{{$randomName}}\")\r",
+							"// // pm.globals.set()\r",
+							"// console.log($randomName);\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Body Response\r",
+							"var jsonData = pm.response.json();\r",
+							"console.log(jsonData.url)\r",
+							"\r",
+							"//Header Response\r",
+							"var headerResponse = pm.response.headers.all();\r",
+							"console.log(headerResponse[0].value)\r",
+							"\r",
+							"// Cookies Response\r",
+							"var cookiesResponse = pm.cookies.get('sails.sid');\r",
+							"console.log(cookiesResponse)\r",
+							"\r",
+							"// Test one: Test to confirm name is Michael\r",
+							"pm.test(\"This confirms the name is \" + jsonData.data.name, function (){\r",
+							"    pm.expect(jsonData.data.name).to.eql(jsonData.data.name);\r",
+							"});\r",
+							"\r",
+							"// Bonus 1: Request Execution Order\r",
+							"postman.setNextRequest(\"Lists\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"{{userId}}\",\r\n    \"name\": \"{{$randomFullName}}\",\r\n    \"location\": \"In the clouds\"\r\n\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://postman-echo.com/post?id={{userId}}",
+					"protocol": "https",
+					"host": [
+						"postman-echo",
+						"com"
+					],
+					"path": [
+						"post"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "{{userId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Hide Sensitive Info",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "apiKey",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "{{Api-key}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://postman-echo.com/get",
+					"protocol": "https",
+					"host": [
+						"postman-echo",
+						"com"
+					],
+					"path": [
+						"get"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Increment Parameters",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// increment random numbers by +, -, /, *, %\r",
+							"\r",
+							"let localVal = pm.globals.get(\"userId\")\r",
+							"pm.globals.set(\"userId\", localVal*3)\r",
+							"\r",
+							"//Console.log(localVal)\r",
+							"\r",
+							"\r",
+							"//Random PhoneNumber for Test\r",
+							"var EightDigit = Math.floor(Math.random() * 100000000);\r",
+							"PhoneNumber = '080' + EightDigit\r",
+							"console.log(PhoneNumber)\r",
+							"\r",
+							"// Generate OTP code\r",
+							"var sixDigit = Math.floor(Math.random() * 100000000);\r",
+							"console.log(sixDigit)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Random Names for Test\r",
+							"/**\r",
+							" var listofLastNames = pm.sendRequest(pm.variables.get(\"{{LNUrl}}\"),\r",
+							" function (err, response) {\r",
+							"     console.log(listofLastNames);\r",
+							" });\r",
+							" \r",
+							" */\r",
+							"\r",
+							"\r",
+							"// Bonus 1: Request Execution Order\r",
+							"postman.setNextRequest(\"Array\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://postman-echo.com/get?value={{userId}}",
+					"protocol": "https",
+					"host": [
+						"postman-echo",
+						"com"
+					],
+					"path": [
+						"get"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "{{userId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Use variables from Files",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"{{name}}\",\r\n\"location\": \"{{location}}\",\r\n\"username\": \"{{username}}\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://postman-echo.com/post?id={{userId}}",
+					"protocol": "https",
+					"host": [
+						"postman-echo",
+						"com"
+					],
+					"path": [
+						"post"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "{{userId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Re-use variables",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// body response\r",
+							"var jsonData = pm.response.json();\r",
+							"console.log(jsonData.data.name)\r",
+							"console.log(jsonData.url)\r",
+							"\r",
+							"// Test One: Test to confirm the name entered is captured and displayed\r",
+							"pm.test(\"This confirm the name is \" + jsonData.data.name, function () {\r",
+							"    pm.expect(jsonData.data.name).to.eql(jsonData.data.name);\r",
+							"});\r",
+							"\r",
+							"// Headers response\r",
+							"var headersResponse = pm.response.headers.all();\r",
+							"console.log(headersResponse[0].value)\r",
+							"\r",
+							"pm.globals.set(\"globalHeaderDateValue\", headersResponse[0].value)\r",
+							"\r",
+							"// Cookies Response\r",
+							"var cookiesResponse = pm.cookies.get(\"sails.sid\");\r",
+							"console.log(cookiesResponse)\r",
+							"\r",
+							"pm.collectionVariables.set(\"cookiesResponse\", cookiesResponse);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"{{userId}}\",\r\n    \"name\": \"Samson\",\r\n    \"location\": \"In the Space\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://postman-echo.com/post?={{userId}}",
+					"protocol": "https",
+					"host": [
+						"postman-echo",
+						"com"
+					],
+					"path": [
+						"post"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "{{userId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lists",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// body response\r",
+							"var jsonData = pm.response.json();\r",
+							"console.log(jsonData[7].id)\r",
+							"\r",
+							"// Test One: Test to confirm the ID of the 8th item is 8\r",
+							"pm.test(\"This confirm the Id of the 8th item is \" + jsonData[7].id, function () {\r",
+							"    pm.expect(jsonData[7].id).to.eql(jsonData[7].id);\r",
+							"});\r",
+							"\r",
+							"// Bonus 1: Request Execution Order\r",
+							"postman.setNextRequest(\"Increment Parameters\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Array",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// body response\r",
+							"var jsonData = pm.response.json();\r",
+							"console.log(jsonData.data[244]);\r",
+							"\r",
+							"// Test One: Test to confirm 244th name is Lukas\r",
+							"pm.test(\"This confirm the name on the 244th position is \" + jsonData.data[244], function () {\r",
+							"    pm.expect(jsonData.data[244]).to.eql(jsonData.data[244])\r",
+							"});\r",
+							"\r",
+							"// Bonus 1: Request Execution Order\r",
+							"postman.setNextRequest(\"XML\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.randomlists.com/data/names-male.json",
+					"protocol": "https",
+					"host": [
+						"www",
+						"randomlists",
+						"com"
+					],
+					"path": [
+						"data",
+						"names-male.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "XML",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonObject = xml2Json(responseBody);\r",
+							"console.log(jsonObject.TravelerinformationResponse.travelers.Travelerinformation[9].email)\r",
+							"\r",
+							"let travelers_email = jsonObject.TravelerinformationResponse.travelers.Travelerinformation[9].email\r",
+							"\r",
+							"// Test One: Confirm the Traveler Karen Email Address\r",
+							"pm.test(\"This confirms the email address of Karen is \" + travelers_email, function () {\r",
+							"    pm.expect(\"karen@mail.ru\").to.eql(travelers_email)\r",
+							"});\r",
+							"\r",
+							"\r",
+							"// Bonus 1: Request Execution Order\r",
+							"postman.setNextRequest(\"Bonus Lesson\")\r",
+							"\r",
+							"// pm.environment.set(\"travelers_email\", travelers_email);\r",
+							"\r",
+							"// pm.test(\"Travelers Email is equal to \" + travelers_email, function () {\r",
+							"//     pm.expect(travelers_email).to.eql(travelers_email);\r",
+							"// })"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://restapi.adequateshop.com/api/Traveler?page=1",
+					"protocol": "http",
+					"host": [
+						"restapi",
+						"adequateshop",
+						"com"
+					],
+					"path": [
+						"api",
+						"Traveler"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bonus Lesson",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"// Bonus 1: Request Execution Order\r",
+							"postman.setNextRequest(null)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"7kminchelle\",\r\n    \"password\": \"0lelplR\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dummyjson.com/auth/login",
+					"protocol": "https",
+					"host": [
+						"dummyjson",
+						"com"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "cookiesResponse",
+			"value": ""
+		}
+	]
+}
