@@ -1,0 +1,227 @@
+{
+	"info": {
+		"_postman_id": "fa5f4730-7919-4747-94ae-13130bd85487",
+		"name": "Module3BAPITask4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22953723"
+	},
+	"item": [
+		{
+			"name": "GetAllBooks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"    pm.environment.set(\"Task4BookId\", \"1\");\r",
+							"\r",
+							"//     pm.test(\"Validate that list of books returns\", function () {\r",
+							"//     pm.expect(pm.response.text()).to.include(\"1\", \"2\", \"3\", \"4\",\"5\", \"6\");\r",
+							"// });\r",
+							"// pm.test(\"Validate that the each book have their specified name\", function () {\r",
+							"//    pm.expect(pm.response.text()).to.include(\"name\")\r",
+							"// });\r",
+							"\r",
+							"// pm.test(\"Validate that fiction books are listed\", function () {\r",
+							"//    pm.expect(pm.response.text()).to.include(\"fiction\")\r",
+							"// });\r",
+							"\r",
+							"// pm.test(\"Validate that non-fiction books are listed\", function () {\r",
+							"//    pm.expect(pm.response.text()).to.include(\"non-fiction\")\r",
+							"// });\r",
+							"\r",
+							"// pm.test(\"Validate that books that are available are stated\", function () {\r",
+							"//    pm.expect(pm.response.text()).to.include(\"true\")\r",
+							"// });\r",
+							"\r",
+							"// pm.test(\"Validate that books that are not available are stated\", function () {\r",
+							"//    pm.expect(pm.response.text()).to.include(\"false\")\r",
+							"// });\r",
+							"\r",
+							"// pm.test(\"Validate that Status code returns 200\", function () {\r",
+							"//     pm.response.to.have.status(200);\r",
+							"// });\r",
+							"// pm.test(\"Validate that Status code name is OK\", function () {\r",
+							"//     pm.response.to.have.status(\"OK\");\r",
+							"// });\r",
+							"// pm.test(\"Validate that the response time is less than 500ms\", function () {\r",
+							"//     pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+							"// });\r",
+							"\r",
+							"// // Place an Order \r",
+							"// postman.setNextRequest(\"API_Authentication_Sample_Work\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://simple-books-api.glitch.me/books",
+					"protocol": "https",
+					"host": [
+						"simple-books-api",
+						"glitch",
+						"me"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BookOrderTask4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Validate that an orderId is created\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"orderId\");\r",
+							"});\r",
+							"pm.test(\"Validate that the response body 'Created' have a boolean value\", function () {\r",
+							"   pm.expect(pm.response.text()).to.include(\"true\")\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate that Status code returns 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Validate that Status code name is created\", function () {\r",
+							"    pm.response.to.have.status(\"Created\");\r",
+							"});\r",
+							"pm.test(\"Validate that the response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+							"});\r",
+							"\r",
+							"// // Place an Order \r",
+							"// postman.setNextRequest(\"Get_Books_Sample_Work\")\r",
+							"\r",
+							"// pm.test(\"Body is correct\", function () {\r",
+							"    // pm.response.to.have.body(\"response_body_string\");\r",
+							"// });\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Task4Access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"bookId\": {{Task4BookId}},\r\n    \"customerName\": \"{{Random Name}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://simple-books-api.glitch.me/orders",
+					"protocol": "https",
+					"host": [
+						"simple-books-api",
+						"glitch",
+						"me"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Task4Authentication",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var getResponseValue = pm.response.json();\r",
+							"\r",
+							"//  pm.expect(pm.response.text()).to.include(\"accessToken\")\r",
+							"pm.environment.set (\"Task4Access_token\", getResponseValue.accessToken)\r",
+							"\r",
+							"pm.test(\"Validate that response return dynamic accessToken\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"accessToken\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate that Status code returns 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Validate that Status code name is created\", function () {\r",
+							"    pm.response.to.have.status(\"Created\");\r",
+							"});\r",
+							"pm.test(\"Validate that the response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+							"\r",
+							"// User Authentication \r",
+							"postman.setNextRequest(\"Get_Status\")\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.globals.set(\"Random Name\", pm.variables.replaceIn('{{$randomFullName}}'))\r",
+							"\r",
+							"pm.globals.set(\"Random Email Address\", pm.variables.replaceIn('{{$randomEmailAddress}}'))\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"clientName\": \"{{randomName}}\",\r\n   \"clientEmail\": \"{{$randomExampleEmail}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://simple-books-api.glitch.me/api-clients/",
+					"protocol": "https",
+					"host": [
+						"simple-books-api",
+						"glitch",
+						"me"
+					],
+					"path": [
+						"api-clients",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
